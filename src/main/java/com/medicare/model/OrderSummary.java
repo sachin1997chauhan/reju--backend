@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.List; 
+import java.util.List;  
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderSummary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +32,19 @@ public class OrderSummary {
 	public void setOrderDetails(List<OrderDetails> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+
+	public OrderSummary() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public OrderSummary(int id, List<OrderDetails> orderDetails) {
+		super();
+		this.id = id;
+		this.orderDetails = orderDetails;
+	}
+	
+	
 	
 	
 }

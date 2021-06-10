@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,12 +14,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,8 +71,18 @@ public class OrderDetails {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	
-	
-	
-	
+	public OrderDetails(int orderId, OrderSummary orderSummary, List<Product> products, String orderUID, LocalDate date,
+			int totalAmount) {
+		super();
+		this.orderId = orderId;
+		this.orderSummary = orderSummary;
+		this.products = products;
+		this.orderUID = orderUID;
+		this.date = date;
+		this.totalAmount = totalAmount;
+	}
+	public OrderDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}	
 }

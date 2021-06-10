@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CascadeType; 
 import javax.persistence.Column;
 import javax.persistence.Entity;  
 import javax.persistence.GeneratedValue;
@@ -8,11 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;  
 
-import lombok.AllArgsConstructor;   
-
-@AllArgsConstructor
 @Entity
 public class User {
 	@Id
@@ -102,8 +99,20 @@ public class User {
 	public void setOrderSummary(OrderSummary orderSummary) {
 		this.orderSummary = orderSummary;
 	}
+	public User(int id, String email, String username, String password, String name, String role, Boolean isEnabled,
+			String address, Cart cart, OrderSummary orderSummary) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+		this.isEnabled = isEnabled;
+		this.address = address;
+		this.cart = cart;
+		this.orderSummary = orderSummary;
+	}
 	
-	
-
 
 }

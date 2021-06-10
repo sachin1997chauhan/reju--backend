@@ -1,18 +1,12 @@
 package com.medicare.model;
 
-import java.util.Date;  
+import java.util.Date;   
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore; 
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor; 
-
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Product {
 	
@@ -117,5 +111,26 @@ public class Product {
 	public void setOrderDetails(List<OrderDetails> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Product(int id, String name, int price, String category, int quantity, String imageName, String seller,
+			String descr, Boolean active, byte[] image, Date date, List<Cart> carts, List<OrderDetails> orderDetails) {
+		super();
+		Id = id;
+		this.name = name;
+		this.price = price;
+		this.category = category;
+		this.quantity = quantity;
+		this.imageName = imageName;
+		this.seller = seller;
+		this.descr = descr;
+		this.active = active;
+		this.image = image;
+		this.date = date;
+		this.carts = carts;
+		this.orderDetails = orderDetails;
+	}
+	 
 }

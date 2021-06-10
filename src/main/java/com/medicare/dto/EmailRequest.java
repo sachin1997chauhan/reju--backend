@@ -1,13 +1,26 @@
 package com.medicare.dto;
 
-import lombok.AllArgsConstructor; 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class EmailRequest {
 	private String to;
+
+	public EmailRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public EmailRequest(String to) {
+		super();
+		this.to = to;
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
+	}
+	
 	
 }
