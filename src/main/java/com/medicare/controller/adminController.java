@@ -41,7 +41,15 @@ public class adminController {
 
 	@PostMapping("/uploadData")
 	public ResponseEntity<?> uploadData(@RequestBody proReq proreq) throws IOException {
-		Product product = productService.saveProduct(this.file,proreq);
+		Product product=null;
+		try {
+			product = productService.saveProduct(this.file,proreq);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			return ResponseEntity.ok(e.getMessage());
+			
+		}
 		return ResponseEntity.ok(product);
 	}
 	
