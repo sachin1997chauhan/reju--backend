@@ -22,14 +22,15 @@ public class CartService {
 	
 	public List<Product> getProducts(Cart cart) throws IOException {
 		List<Product> products = cart.getProducts();
-//		for (Product product : products) {
-//			System.out.println("product for users "+product.getImageName());
+		for (Product product : products) {
+			System.out.println("product for users "+product.getImageName());
 //			File saveFile=new ClassPathResource("static").getFile();
-//			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-//			// its name
-//			System.out.println("des: "+destination);
-//			product.setImage(IOUtils.toByteArray(destination.toUri()));
-//		}
+			File saveFile = new File("images");
+			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
+			// its name
+			System.out.println("des: "+destination);
+			product.setImage(IOUtils.toByteArray(destination.toUri()));
+		}
 		return products;
 	}
 

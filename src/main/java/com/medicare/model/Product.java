@@ -22,7 +22,7 @@ public class Product {
 	private String seller;
 	private String descr;
 	private Boolean active=true;
-	
+	@Transient
 	private byte[] image;
 	private Date date=new Date();
 	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)

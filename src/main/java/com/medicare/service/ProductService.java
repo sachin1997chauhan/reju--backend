@@ -35,15 +35,15 @@ public class ProductService {
 
 	public Product saveProduct(MultipartFile file, proReq proreq) throws IOException {	
 //		File saveFile=new ClassPathResource("static").getFile();
-//		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
-//		System.out.println("input stream "+file.getInputStream());
-//		System.out.println("path: "+path);
-//		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+		File saveFile = new File("images");
+		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+		System.out.println("input stream "+file.getInputStream());
+		System.out.println("path: "+path);
+		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		
 		
 		Product product = new Product();
 		product.setImageName(file.getOriginalFilename());
-		product.setImage(file.getBytes());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
 		product.setPrice(proreq.getPrice());
@@ -58,13 +58,14 @@ public class ProductService {
 	public List<Product> getAllProducts() throws IOException {
 				
 		List<Product> products = proRepo.findAll();
-//		for (Product product : products) {
-//			System.out.println(product.getImageName());
+		for (Product product : products) {
+			System.out.println(product.getImageName());
 //			File saveFile=new ClassPathResource("static").getFile();
-//			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-//			System.out.println("des: "+destination);
-//			product.setImage(IOUtils.toByteArray(destination.toUri()));
-//		}
+			File saveFile = new File("images");
+			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
+			System.out.println("des: "+destination);
+			product.setImage(IOUtils.toByteArray(destination.toUri()));
+		}
 		return products;
 	}
 
@@ -101,21 +102,22 @@ public class ProductService {
 		Optional<Product> product1 = proRepo.findById(id);
 		Product product = product1.get();
 //		File saveFile=new ClassPathResource("static").getFile();
-//		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-//		product.setImage(IOUtils.toByteArray(destination.toUri()));
+		File saveFile = new File("images");
+		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
+		product.setImage(IOUtils.toByteArray(destination.toUri()));
 		return product;
 	}
 
 	public Product updateProduct(MultipartFile file, proReq proreq,int id) throws IOException {		
 //		File saveFile=new ClassPathResource("static").getFile();
-//		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
-//		System.out.println("input stream "+file.getInputStream());
-//		System.out.println("path: "+path);
-//		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+		File saveFile = new File("images");
+		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+		System.out.println("input stream "+file.getInputStream());
+		System.out.println("path: "+path);
+		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
 		Optional<Product> findById = proRepo.findById(id);
 		Product product=findById.get();
-		product.setImage(file.getBytes());
 		product.setImageName(file.getOriginalFilename());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
