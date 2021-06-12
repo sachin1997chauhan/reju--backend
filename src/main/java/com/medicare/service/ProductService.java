@@ -34,8 +34,7 @@ public class ProductService {
 	
 
 	public Product saveProduct(MultipartFile file, proReq proreq) throws IOException {	
-//		File saveFile=new ClassPathResource("static").getFile();
-		File saveFile = new File("images");
+		File saveFile=new ClassPathResource("static").getFile();
 		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 		System.out.println("input stream "+file.getInputStream());
 		System.out.println("path: "+path);
@@ -60,8 +59,7 @@ public class ProductService {
 		List<Product> products = proRepo.findAll();
 		for (Product product : products) {
 			System.out.println(product.getImageName());
-//			File saveFile=new ClassPathResource("static").getFile();
-			File saveFile = new File("images");
+			File saveFile=new ClassPathResource("static").getFile();
 			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 			System.out.println("des: "+destination);
 			product.setImage(IOUtils.toByteArray(destination.toUri()));
@@ -101,16 +99,14 @@ public class ProductService {
 	public Product getProduct(int id) throws IOException {
 		Optional<Product> product1 = proRepo.findById(id);
 		Product product = product1.get();
-//		File saveFile=new ClassPathResource("static").getFile();
-		File saveFile = new File("images");
+		File saveFile=new ClassPathResource("static").getFile();
 		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 		product.setImage(IOUtils.toByteArray(destination.toUri()));
 		return product;
 	}
 
 	public Product updateProduct(MultipartFile file, proReq proreq,int id) throws IOException {		
-//		File saveFile=new ClassPathResource("static").getFile();
-		File saveFile = new File("images");
+		File saveFile=new ClassPathResource("static").getFile();
 		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 		System.out.println("input stream "+file.getInputStream());
 		System.out.println("path: "+path);

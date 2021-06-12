@@ -24,8 +24,7 @@ public class CartService {
 		List<Product> products = cart.getProducts();
 		for (Product product : products) {
 			System.out.println("product for users "+product.getImageName());
-//			File saveFile=new ClassPathResource("static").getFile();
-			File saveFile = new File("images");
+			File saveFile=new ClassPathResource("static").getFile();
 			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
 			// its name
 			System.out.println("des: "+destination);
