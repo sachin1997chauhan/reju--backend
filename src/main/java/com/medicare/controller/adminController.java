@@ -47,6 +47,8 @@ public class adminController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.err.println("555555555555");
+			e.printStackTrace();
 			return ResponseEntity.ok(e.getMessage());
 			
 		}

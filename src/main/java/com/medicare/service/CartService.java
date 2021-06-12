@@ -2,6 +2,7 @@ package com.medicare.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -21,13 +22,14 @@ public class CartService {
 	
 	public List<Product> getProducts(Cart cart) throws IOException {
 		List<Product> products = cart.getProducts();
-		for (Product product : products) {
-			System.out.println("product for users "+product.getImageName());
-			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-			// its name
-			product.setImage(IOUtils.toByteArray(destination.toUri()));
-		}
+//		for (Product product : products) {
+//			System.out.println("product for users "+product.getImageName());
+//			File saveFile=new ClassPathResource("static").getFile();
+//			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
+//			// its name
+//			System.out.println("des: "+destination);
+//			product.setImage(IOUtils.toByteArray(destination.toUri()));
+//		}
 		return products;
 	}
 

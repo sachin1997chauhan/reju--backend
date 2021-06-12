@@ -2,6 +2,7 @@ package com.medicare.service;
 
 import java.io.File;   
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -30,12 +31,12 @@ public class UserService {
 
 	public List<Product> getAllProducts() throws IOException {
 		List<Product> products = proRepo.findAllForUser();
-		for (Product product : products) {
-			System.out.println("product for users " + product.getImageName());
-			File saveFile = new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-			product.setImage(IOUtils.toByteArray(destination.toUri()));
-		}
+//		for (Product product : products) {
+//			System.out.println("product for users " + product.getImageName());
+//			File saveFile=new ClassPathResource("static").getFile();
+//			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
+//			product.setImage(IOUtils.toByteArray(destination.toUri()));
+//		}
 		return products;
 	}
 
@@ -50,9 +51,9 @@ public class UserService {
 	public Product getProduct(int id) throws IOException {
 		Optional<Product> product1 = proRepo.findById(id);
 		Product product = product1.get();
-		File saveFile = new ClassPathResource("static").getFile();
-		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-		product.setImage(IOUtils.toByteArray(destination.toUri()));
+//		File saveFile=new ClassPathResource("static").getFile();
+//		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
+//		product.setImage(IOUtils.toByteArray(destination.toUri()));
 		return product;
 	}
 
