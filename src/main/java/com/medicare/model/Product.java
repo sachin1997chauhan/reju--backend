@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.Date;   
+import java.util.Date;    
 import java.util.List;
 
 import javax.persistence.*;
@@ -18,12 +18,16 @@ public class Product {
 	private int price;
 	private String category;
 	private int quantity;
-	private String imageName;
 	private String seller;
 	private String descr;
 	private Boolean active=true;
-	@Lob
-	private byte[] image;
+	private String imageURL;
+	public String getImageURL() {
+		return imageURL;
+	}
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
 	private Date date=new Date();
 	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -63,12 +67,7 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getImageName() {
-		return imageName;
-	}
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
+
 	public String getSeller() {
 		return seller;
 	}
@@ -87,12 +86,7 @@ public class Product {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	public byte[] getImage() {
-		return image;
-	}
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
+	
 	public Date getDate() {
 		return date;
 	}
@@ -115,22 +109,6 @@ public class Product {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(int id, String name, int price, String category, int quantity, String imageName, String seller,
-			String descr, Boolean active, byte[] image, Date date, List<Cart> carts, List<OrderDetails> orderDetails) {
-		super();
-		Id = id;
-		this.name = name;
-		this.price = price;
-		this.category = category;
-		this.quantity = quantity;
-		this.imageName = imageName;
-		this.seller = seller;
-		this.descr = descr;
-		this.active = active;
-		this.image = image;
-		this.date = date;
-		this.carts = carts;
-		this.orderDetails = orderDetails;
-	}
+	
 	 
 }

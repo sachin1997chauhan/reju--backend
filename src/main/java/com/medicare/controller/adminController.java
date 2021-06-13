@@ -28,22 +28,22 @@ public class adminController {
 	private ProductService productService;
 	
 	
-	private MultipartFile file;
-
-	@PostMapping("/upload")
-	public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile Recfile) throws IOException {
-		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
-		System.out.println("recfile stream " + Recfile.getInputStream());
-		this.file = Recfile;
-
-		return ResponseEntity.ok("done");
-	}
+//	private MultipartFile file;
+//
+//	@PostMapping("/upload")
+//	public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile Recfile) throws IOException {
+//		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
+//		System.out.println("recfile stream " + Recfile.getInputStream());
+//		this.file = Recfile;
+//
+//		return ResponseEntity.ok("done");
+//	}
 
 	@PostMapping("/uploadData")
 	public ResponseEntity<?> uploadData(@RequestBody proReq proreq) throws IOException {
 		Product product=null;
 		try {
-			product = productService.saveProduct(this.file,proreq);
+			product = productService.saveProduct(proreq);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -75,19 +75,18 @@ public class adminController {
 		return ResponseEntity.ok(product);
 	}
 	
-	@PostMapping("/product/{id}/editImage")
-	public ResponseEntity<?> editImage(@PathVariable("id") int id,@RequestParam("image") MultipartFile Recfile) throws IOException {
-		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
-		System.out.println("recfile stream " + Recfile.getInputStream());
-		this.file = Recfile;
-		System.out.println("received file "+Recfile);
-		return ResponseEntity.ok("done");
-	}
+//	@PostMapping("/product/{id}/editImage")
+//	public ResponseEntity<?> editImage(@PathVariable("id") int id,@RequestParam("image") MultipartFile Recfile) throws IOException {
+//		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
+//		System.out.println("recfile stream " + Recfile.getInputStream());
+//		this.file = Recfile;
+//		System.out.println("received file "+Recfile);
+//		return ResponseEntity.ok("done");
+//	}
 
 	@PostMapping("/product/{id}/editData")
 	public ResponseEntity<?> editData(@PathVariable("id") int id,@RequestBody proReq proreq) throws IOException {
-		System.out.println(this.file);
-		Product product = productService.updateProduct(this.file,proreq,id);
+		Product product = productService.updateProduct(proreq,id);
 		return ResponseEntity.ok(product);
 	}
 }

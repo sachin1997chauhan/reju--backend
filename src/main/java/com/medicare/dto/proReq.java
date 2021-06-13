@@ -8,6 +8,7 @@ public class proReq {
 	private String seller;
 	private String descr;
 	private Boolean active=true;
+	private String imageURL;
 	public proReq() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,6 +31,14 @@ public class proReq {
 	}
 	public int getPrice() {
 		return price;
+	}
+	
+	
+	public String getImageURL() {
+		return imageURL;
+	}
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 	public void setPrice(int price) {
 		this.price = price;

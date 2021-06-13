@@ -37,7 +37,7 @@ public class ProductService {
 	private UserRepository userRepository;
 	
 
-	public Product saveProduct(MultipartFile file, proReq proreq) throws IOException {	
+	public Product saveProduct( proReq proreq) throws IOException {	
 //		File saveFile=new ClassPathResource("static").getFile();
 //		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 //		System.out.println("input stream "+file.getInputStream());
@@ -46,8 +46,7 @@ public class ProductService {
 		
 		
 		Product product = new Product();
-		product.setImageName(file.getOriginalFilename());
-		product.setImage(file.getBytes());
+		product.setImageURL(proreq.getImageURL());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
 		product.setPrice(proreq.getPrice());
@@ -110,7 +109,7 @@ public class ProductService {
 		return product;
 	}
 
-	public Product updateProduct(MultipartFile file, proReq proreq,int id) throws IOException {		
+	public Product updateProduct(proReq proreq,int id) throws IOException {		
 //		File saveFile=new ClassPathResource("static").getFile();
 //		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 //		System.out.println("input stream "+file.getInputStream());
@@ -119,8 +118,7 @@ public class ProductService {
 		
 		Optional<Product> findById = proRepo.findById(id);
 		Product product=findById.get();
-		product.setImageName(file.getOriginalFilename());
-		product.setImage(file.getBytes());
+		product.setImageURL(proreq.getImageURL());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
 		product.setPrice(proreq.getPrice());
