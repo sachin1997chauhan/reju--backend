@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.Date;    
+import java.util.Date;     
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,12 +21,13 @@ public class Product {
 	private String seller;
 	private String descr;
 	private Boolean active=true;
-	private String imageURL;
-	public String getImageURL() {
-		return imageURL;
+	@Column(length=2000)
+	private byte[] image;
+	public byte[] getImage() {
+		return image;
 	}
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	private Date date=new Date();
 	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)

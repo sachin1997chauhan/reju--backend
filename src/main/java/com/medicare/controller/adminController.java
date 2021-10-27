@@ -28,21 +28,23 @@ public class adminController {
 	private ProductService productService;
 	
 	
-//	private MultipartFile file;
-//
-//	@PostMapping("/upload")
-//	public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile Recfile) throws IOException {
-//		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
-//		System.out.println("recfile stream " + Recfile.getInputStream());
-//		this.file = Recfile;
-//
-//		return ResponseEntity.ok("done");
-//	}
+	private MultipartFile file;
+
+	@PostMapping("/upload")
+	public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile Recfile) throws IOException {
+		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
+		System.out.println("recfile stream " + Recfile.getInputStream());
+		this.file = Recfile;
+
+		return ResponseEntity.ok("done");
+	}
 
 	@PostMapping("/uploadData")
 	public ResponseEntity<?> uploadData(@RequestBody proReq proreq) throws IOException {
 		Product product=null;
+		proreq.setImage(this.file.getBytes());
 		try {
+			
 			product = productService.saveProduct(proreq);
 
 		} catch (Exception e) {

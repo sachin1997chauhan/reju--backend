@@ -17,7 +17,7 @@ import com.medicare.service.AuthService;
 //import com.medicare.service.EmailService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class Home {
 	
 

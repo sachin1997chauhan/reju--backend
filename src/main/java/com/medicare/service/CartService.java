@@ -1,6 +1,6 @@
 package com.medicare.service;
 
-import java.io.File; 
+import java.io.File;  
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -19,7 +19,7 @@ public class CartService {
 
 	
 
-	
+
 	public List<Product> getProducts(Cart cart) throws IOException {
 		List<Product> products = cart.getProducts();
 //		for (Product product : products) {

@@ -8,21 +8,12 @@ public class proReq {
 	private String seller;
 	private String descr;
 	private Boolean active=true;
-	private String imageURL;
+	private byte[] image;
 	public proReq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public proReq(String name, int price, String category, int quantity, String seller, String descr, Boolean active) {
-		super();
-		this.name = name;
-		this.price = price;
-		this.category = category;
-		this.quantity = quantity;
-		this.seller = seller;
-		this.descr = descr;
-		this.active = active;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -34,11 +25,11 @@ public class proReq {
 	}
 	
 	
-	public String getImageURL() {
-		return imageURL;
+	public byte[] getImage() {
+		return image;
 	}
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	public void setPrice(int price) {
 		this.price = price;

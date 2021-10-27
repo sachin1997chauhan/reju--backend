@@ -1,6 +1,6 @@
 package com.medicare.service;
 
-import org.apache.commons.io.IOUtils; 
+import org.apache.commons.io.IOUtils ; 
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile; import com.amazonaws.services.s3.AmazonS3;
+import org.springframework.web.multipart.MultipartFile; 
 import com.medicare.dto.proReq;
 import com.medicare.model.Product;
 import com.medicare.model.User;
@@ -25,10 +25,7 @@ import com.medicare.repo.productRepository;
 @Service
 public class ProductService {
 	
-	private String bucketName="medicareimages";
-
-    @Autowired
-    private AmazonS3 s3Client;
+	
 
 	@Autowired
 	private productRepository proRepo;
@@ -46,7 +43,7 @@ public class ProductService {
 		
 		
 		Product product = new Product();
-		product.setImageURL(proreq.getImageURL());
+		product.setImage(proreq.getImage());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
 		product.setPrice(proreq.getPrice());
@@ -118,7 +115,7 @@ public class ProductService {
 		
 		Optional<Product> findById = proRepo.findById(id);
 		Product product=findById.get();
-		product.setImageURL(proreq.getImageURL());
+		product.setImage(proreq.getImage());
 		product.setCategory(proreq.getCategory());
 		product.setName(proreq.getName());
 		product.setPrice(proreq.getPrice());
